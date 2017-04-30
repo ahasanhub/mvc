@@ -14,9 +14,11 @@ namespace MvcMovie.Controllers
             return View();
         }
         //GET: HelloWorld/Welcome
-        public string Welcome()
+        public ActionResult Welcome(string name,int num=1)
         {
-            return "This is my welcome message...";
+            ViewBag.Message ="Hello "+ name;
+            ViewBag.Num = num;
+            return View();
         }
     }
 }
