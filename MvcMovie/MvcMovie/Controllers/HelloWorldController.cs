@@ -20,5 +20,19 @@ namespace MvcMovie.Controllers
             ViewBag.Num = num;
             return View();
         }
+        [HttpPost]
+        public string Update()
+        {
+            var id = Request["myid"];
+            var roll = Request["roll"];
+            return "Updated data.";
+        }
+        [HttpPost]
+        public string Update1(FormCollection values)
+        {
+            var id = values["myid"];
+            var roll = values["roll"];
+            return "Updated data.";
+        }
     }
 }
