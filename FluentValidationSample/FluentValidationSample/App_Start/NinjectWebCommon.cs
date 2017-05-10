@@ -1,3 +1,7 @@
+using System.Web.ModelBinding;
+using FluentValidation.Mvc;
+using FluentValidationSample.Validation;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(FluentValidationSample.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(FluentValidationSample.App_Start.NinjectWebCommon), "Stop")]
 
@@ -61,6 +65,9 @@ namespace FluentValidationSample.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            ValidatorFactory validatorFactory = new ValidatorFactory(kernel);
+            FluentValidationModelValidatorProvider.Configure(x => x.ValidatorFactory = validatorFactory);
+            DataAnnotationsModelValidatorProvider.AddImplicitRequiredAttributeForValueTypes = false;
         }        
     }
 }

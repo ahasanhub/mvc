@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FluentValidationSample.Models
+namespace FluentValidationWithModal.Models
 {
-    public class BootstrapModel
+    public class BootstrapModal
     {
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string AreaLabeledId { get; set; }
     }
 }

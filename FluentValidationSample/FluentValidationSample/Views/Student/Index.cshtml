@@ -1,0 +1,19 @@
+﻿@using FluentValidationSample.Models
+
+<div class="btn-group">
+    <a id="addEditStudent" href="@Url.Action("AddEditStudent","Student")" data-toggle="modal"  data-target="#modal-add-edit-student" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i> Add New
+    </a>
+</div>
+<div class="btn-group">
+    <a id="addEditStudent1" href="@Url.Action("AddEditStudent1","Student")" data-toggle="modal" data-target="#modal-add-edit-student" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i> Add New
+    </a>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModal { ID = "modal-add-edit-student", AreaLabeledId = "modal-add-edit-student-label" })
+
+@*@section scripts
+{
+    @Scripts.Render("~/Scripts/jQuery.customValidate.js", "~/Scripts/student-index.js")
+}*@
