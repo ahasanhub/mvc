@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using Microsoft.Web.Administration;
 
-namespace WebAdministration.IIS.Binding2
+namespace WebApplication1.Controllers
 {
-    class Program
+   
+    public class ValuesController : ApiController
     {
-        static void Main(string[] args)
+        // GET api/values
+        public IEnumerable<string> Get()
         {
-            using (ServerManager serverManager=new ServerManager())
+            using (ServerManager serverManager = new ServerManager())
             {
                 Configuration config = serverManager.GetApplicationHostConfiguration();
                 ConfigurationSection sitesSection = config.GetSection("system.applicationHost/sites");
@@ -34,6 +37,7 @@ namespace WebAdministration.IIS.Binding2
 
                 serverManager.CommitChanges();
             }
+            return new string[] { "value1", "value2" };
         }
         private static ConfigurationElement FindElement(ConfigurationElementCollection collection, string elementTagName, params string[] keyValues)
         {
@@ -63,6 +67,27 @@ namespace WebAdministration.IIS.Binding2
                 }
             }
             return null;
+        }
+
+        // GET api/values/5
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/values
+        public void Post([FromBody]string value)
+        {
+        }
+
+        // PUT api/values/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
+
+        // DELETE api/values/5
+        public void Delete(int id)
+        {
         }
     }
 }
