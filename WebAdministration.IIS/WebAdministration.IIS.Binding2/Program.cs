@@ -11,29 +11,25 @@ namespace WebAdministration.IIS.Binding2
     {
         static void Main(string[] args)
         {
-            using (ServerManager serverManager=new ServerManager())
+            using (ServerManager serverManager = new ServerManager())
             {
                 Configuration config = serverManager.GetApplicationHostConfiguration();
                 ConfigurationSection sitesSection = config.GetSection("system.applicationHost/sites");
                 ConfigurationElementCollection sitesCollection = sitesSection.GetCollection();
 
-                ConfigurationElement siteElement = FindElement(sitesCollection, "site", "name", @"testsite");
+                ConfigurationElement siteElement = FindElement(sitesCollection, "site", "name", @"EHR");
 
                 if (siteElement == null) throw new InvalidOperationException("Element not found!");
 
                 ConfigurationElementCollection bindingsCollection = siteElement.GetCollection("bindings");
                 ConfigurationElement bindingElement = bindingsCollection.CreateElement("binding");
                 bindingElement["protocol"] = @"http";
-                bindingElement["bindingInformation"] = @"*:80:test2.site";
+                bindingElement["bindingInformation"] = @"*:80:ss.text";
                 bindingsCollection.Add(bindingElement);
-
-                //ConfigurationElement bindingElement1 = bindingsCollection.CreateElement("binding");
-                //bindingElement1["protocol"] = @"https";
-                //bindingElement1["bindingInformation"] = @"*:443:";
-                //bindingsCollection.Add(bindingElement1);
 
                 serverManager.CommitChanges();
             }
+            Console.WriteLine("Success");
         }
         private static ConfigurationElement FindElement(ConfigurationElementCollection collection, string elementTagName, params string[] keyValues)
         {

@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>Upload</h2>
+<input type="file" name="FileUpload1" id="FileUpload1"/>
+<input type="button" value="Upload File" id="btnFileUpload"/>
+@Html.ActionLink("Download","Download")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnFileUpload').on('click', function () {
+            var data = new FormData();
+            var files = $("#FileUpload1").get(0).files;
+            // Add the uploaded image content to the form data collection
+            if (files.length > 0) {
+                data.append("UploadedImage", files[0]);
+            }
+            // Make Ajax request with the contentType = false, and procesDate = false
+            var ajaxRequest = $.ajax({
+                type: "POST",
+                url: '@Url.Action("Index")',
+                contentType: false,
+                processData: false,
+                data: data
+            });
+
+            ajaxRequest.done(function (xhr, textStatus) {
+                alert("Upload successfully.");
+            });
+        });
+    });
+</script>
+
