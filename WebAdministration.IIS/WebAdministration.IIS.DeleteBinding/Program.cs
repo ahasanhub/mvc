@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Web.Administration;
 
-namespace WebAdministration.IIS.Binding2
+namespace WebAdministration.IIS.DeleteBinding
 {
     class Program
     {
@@ -23,34 +23,19 @@ namespace WebAdministration.IIS.Binding2
                 if (siteElement == null) throw new InvalidOperationException("Element not found!");
 
                 ConfigurationElementCollection bindingsCollection = siteElement.GetCollection("bindings");
-                ConfigurationElement bindingElement = bindingsCollection.CreateElement("binding");
-                bindingElement["protocol"] = @"http";
-                bindingElement["bindingInformation"] = @"*:80:ss.text";
-                bindingsCollection.Add(bindingElement);
-                //==============================
-               
-                X509Store store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-                store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadWrite);
-
-                // Here, directory is my install dir, and (directory)\bin\certificate.pfx is where the cert file is.
-                // 1234 is the password to the certfile (exported from IIS)
-                //X509Certificate2 certificate = new X509Certificate2(directory + @"\bin\certificate.pfx", "1234");
-
-                //store.Add(certificate);
-
-                //var binding = site.Bindings.Add("*:443:", certificate.GetCertHash(), store.Name);
-                //binding.Protocol = "https";
-
-                Binding bindingElement1 = bindingsCollection.CreateElement("binding") as Binding;
-                //bindingElement1["protocol"] = @"https";
-                //bindingElement1["bindingInformation"] = @"*:443:";
-                if (bindingElement1 != null)
+                for (int i = 0; i < bindingsCollection.Count; i++)
                 {
-                    bindingElement1.Protocol= @"https";
-                    bindingElement1.BindingInformation = @"*:443:";
-                    bindingsCollection.Add(bindingElement1);
+                    var bindingInfo = bindingsCollection[i].Attributes["bindingInformation"].Value;
+                    if (bindingInfo.ToString()== @"*:80:ss.text")
+                    {
+                        bindingsCollection.RemoveAt(i);
+                    }
+                    
                 }
-                //=======================================================
+                //ConfigurationElement bindingElement = bindingsCollection.CreateElement("binding");
+                //bindingElement["protocol"] = @"http";
+                //bindingElement["bindingInformation"] = @"*:80:ss.text";
+                //bindingsCollection.Remove(bindingElement);
                 serverManager.CommitChanges();
             }
             Console.WriteLine("Success");

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdministration.IIS.App",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdministration.IIS.Binding2", "WebAdministration.IIS.Binding2\WebAdministration.IIS.Binding2.csproj", "{4BE89513-7836-4F6D-9ADD-F737D29870DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdministration.IIS.DeleteBinding", "WebAdministration.IIS.DeleteBinding\WebAdministration.IIS.DeleteBinding.csproj", "{D6E1BE5F-50A1-4EA5-AFB5-55C7CF7D7B07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4BE89513-7836-4F6D-9ADD-F737D29870DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE89513-7836-4F6D-9ADD-F737D29870DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE89513-7836-4F6D-9ADD-F737D29870DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E1BE5F-50A1-4EA5-AFB5-55C7CF7D7B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E1BE5F-50A1-4EA5-AFB5-55C7CF7D7B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E1BE5F-50A1-4EA5-AFB5-55C7CF7D7B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E1BE5F-50A1-4EA5-AFB5-55C7CF7D7B07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
