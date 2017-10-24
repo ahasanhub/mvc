@@ -1,0 +1,83 @@
+﻿@model AccountKit.Models.ExternalAutentificationModel
+@{
+    ViewBag.Title = "Social Login";
+}
+
+<h2>Account Kit Login</h2>
+
+<div class="social-login-blocks">
+    <script src="https://sdk.accountkit.com/@(Model.AccountKit_Locale)/sdk.js"></script>
+    <fieldset class="social-login-block">
+        <legend>Login via Email code</legend>
+        <a class="exoauth_btn social-accountkit-btn-email" onclick="accountkit_login_email()">email</a>
+    </fieldset>
+    <fieldset class="social-login-block">
+        <legend>Login via SMS</legend>
+        <a class="exoauth_btn social-accountkit-btn-phone" onclick="accountkit_login_phone()"> phone</a>
+    </fieldset>
+    <script>
+        // initialize Account Kit with CSRF protection
+         AccountKit_OnInteractive = function(){
+    AccountKit.init(
+      {
+          appId: "444985472563667",
+          state: "2d41fea94a4a0df2d287ba6f70d99e6d",
+        version: "v1.0",
+        fbAppEventsEnabled: true,
+        debug: true
+      }
+    );
+  };
+
+        // login callback
+        function loginCallback(response) {
+            console.log(response);
+            if (response.status === "PARTIALLY_AUTHENTICATED") {
+                var returnurl = location.search.split('returnurl=')[1] ? location.search.split('returnurl=')[1] : '';
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("AccountKitLoginPost")',
+                    type: 'post',
+                    async: true,
+                    data: { "code": response.code, "csrf_nonce": response.state, "returnUrl": returnurl },
+                    error: function () {
+                        alert("error logging in.");
+                    },
+                    success: function (response) {
+                        if (!response.success) {
+                            if (response.message)
+                                alert(response.message);
+                        }
+                        if (response.returnUrl && response.returnUrl.length>0) {
+                            window.location.href = response.returnUrl;
+                        }
+                        else {
+                            window.location.reload();
+                        }
+                    }
+                 });
+            }
+            else if (response.status === "NOT_AUTHENTICATED") {
+                // handle authentication failure
+            }
+            else if (response.status === "BAD_PARAMS") {
+                // handle bad parameters
+            }
+        }
+
+        // phone form submission handler
+        function accountkit_login_phone() {
+            var country_code = '+880';
+            var ph_num = '1714814251';
+            AccountKit.login('PHONE',
+              {countryCode: country_code, phoneNumber: ph_num}, // will use default values if this is not specified
+              loginCallback);
+        }
+
+        // email form submission handler
+        function accountkit_login_email() {
+            var email_address = '';
+            AccountKit.login('EMAIL', {emailAddress: email_address}, loginCallback);
+        }
+    </script>
+</div>
