@@ -24,7 +24,7 @@ namespace AccountKit.Controllers
 
         #region Fields
 
-        private readonly string _appId;
+        private readonly string _facebookAppId;
         private readonly string _appSecret;
         private readonly string _api_Version;
         private readonly string _languageCulture;
@@ -37,8 +37,9 @@ namespace AccountKit.Controllers
         public ExternalAuthSocialController()
         {
             this._httpContext = HttpContext;
+            _facebookAppId = "444985472563667";
+            _appSecret = "a90f2dde6327a6bbeb835865f3498078";
             _api_Version = "v1.1";
-            _appId = "444985472563667";
 
         }
         #endregion
@@ -50,7 +51,7 @@ namespace AccountKit.Controllers
         {
             var model = new ExternalAutentificationModel()
             {
-                AccountKit_ClientKeyIdentifier = _appId,
+                FacebookAppId = _facebookAppId,
                 AccountKit_API_Version = _api_Version,
                 AccountKit_CSRF = Guid.NewGuid().ToString(),
                 AccountKit_Locale = _languageCulture
@@ -74,7 +75,7 @@ namespace AccountKit.Controllers
         [NonAction]
         private string QueryAccessToken(string code)
         {
-            var access_token = string.Join("|", new string[] { "AA", this._appId, this._appSecret });
+            var access_token = string.Join("|", new string[] { "AA", this._facebookAppId, this._appSecret });
             var uri = BuildUri(string.Format(TokenEndpoint, this._api_Version), new NameValueCollection {
                     { "grant_type", "authorization_code" },
                     { "code", code },

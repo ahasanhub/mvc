@@ -7,7 +7,7 @@ namespace AccountKit.Models
 {
     public class ExternalAutentificationModel
     {
-        public string AccountKit_ClientKeyIdentifier { get; set; }
+        public string FacebookAppId { get; set; }
         public string AccountKit_CSRF { get; set; }
         public string AccountKit_API_Version { get; set; }
         public string AccountKit_Locale { get; set; }
