@@ -9,58 +9,105 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="input-group" id="adv-search">
-                <input type="text" class="form-control" placeholder="Search for snippets" />
-                <div class="input-group-btn">
-                    <div class="btn-group" role="group">
-                        <div class="dropdown dropdown-lg">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <form class="form-horizontal" role="form">
+        <div class="col-md-6">
+            <div class="dropdown">
+                <a href="http://www.jquery2dotnet.com" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
+                <ul class="dropdown-menu" style="padding: 15px;min-width: 450px;">
+                    <li>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                     <div class="form-group">
-                                        <label for="filter">Filter by</label>
-                                        <select class="form-control">
-                                            <option value="0" selected>All Snippets</option>
-                                            <option value="1">Featured</option>
-                                            <option value="2">Most popular</option>
-                                            <option value="3">Top rated</option>
-                                            <option value="4">Most commented</option>
-                                        </select>
+                                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
+                                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Remember me
+                                        </label>
                                     </div>
                                     <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
+                                        <button type="submit" class="btn btn-success btn-block">Sign in</button>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Author</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="contain">Contains the words</label>
-                                        <input class="form-control" type="text" />
-                                    </div>
-                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </form>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </div>
-                </div>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+                        <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
+                    </li>
+                </ul>
             </div>
         </div>
+        <div class="col-md-6">
+           
+        </div>
     </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <form>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+                        <ul class="dropdown-menu" style="padding: 15px; min-width: 450px;">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                    <input type="text" class="form-control" aria-label="...">
+                </div><!-- /input-group -->
+            </form>
+          
+        </div><!-- /.col-lg-6 -->
+        <div class="col-lg-6">
+            <div class="input-group">
+                
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></button>
+                    
+                    <ul class="dropdown-menu dropdown-menu-left" style="padding: 15px; min-width: 450px;">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Remember me
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <input type="search" class="form-control" aria-label="..." placeholder="Search ...">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                </div>
+                
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
 </div>
 
